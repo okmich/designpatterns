@@ -5,10 +5,10 @@
  */
 package com.okmich.designpatterns.familytree.connection;
 
+import com.okmich.designpatterns.familytree.Connector;
+import com.okmich.designpatterns.familytree.Person;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-
 
 /**
  *

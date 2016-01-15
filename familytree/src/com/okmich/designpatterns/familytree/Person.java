@@ -5,7 +5,6 @@
  */
 package com.okmich.designpatterns.familytree;
 
-import com.okmich.practise.designpattern.familytree.Connectable;
 import java.util.ArrayList;
 import java.util.List;
 

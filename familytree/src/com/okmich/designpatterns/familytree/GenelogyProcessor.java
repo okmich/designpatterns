@@ -5,11 +5,12 @@
  */
 package com.okmich.designpatterns.familytree;
 
-import com.okmich.practise.designpattern.familytree.interpreter.ActionTerm;
-import com.okmich.practise.designpattern.familytree.interpreter.PersonTermFactory;
-import com.okmich.practise.designpattern.familytree.interpreter.PronounTerm;
-import com.okmich.practise.designpattern.familytree.interpreter.ReferenceTerm;
-import com.okmich.practise.designpattern.familytree.interpreter.Term;
+import com.okmich.designpatterns.familytree.interpreter.ActionTerm;
+import com.okmich.designpatterns.familytree.interpreter.PersonTermFactory;
+import com.okmich.designpatterns.familytree.interpreter.PronounTerm;
+import com.okmich.designpatterns.familytree.interpreter.ReferenceTerm;
+import com.okmich.designpatterns.familytree.interpreter.Term;
+
 
 /**
  *
@@ -29,7 +30,7 @@ public class GenelogyProcessor implements Processor<Void> {
         Term term = getTermFromCommand(command);
         //loop through composite terms to call process
         try {
-            term.figureIt("", familyTree);
+           // term.figureIt("", familyTree);
         } catch (Exception e) {
         }
         return null;

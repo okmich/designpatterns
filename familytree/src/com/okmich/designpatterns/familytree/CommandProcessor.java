@@ -5,9 +5,6 @@
  */
 package com.okmich.designpatterns.familytree;
 
-import com.okmich.practise.designpattern.familytree.interpreter.Term;
-import java.util.List;
-
 /**
  *
  * @author m.enudi

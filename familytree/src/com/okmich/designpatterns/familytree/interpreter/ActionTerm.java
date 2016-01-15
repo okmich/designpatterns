@@ -5,6 +5,8 @@
  */
 package com.okmich.designpatterns.familytree.interpreter;
 
+import com.okmich.designpatterns.familytree.FamilyTree;
+
 /**
  *
  * @author m.enudi

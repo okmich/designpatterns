@@ -5,7 +5,8 @@
  */
 package com.okmich.designpatterns.familytree.interpreter;
 
-import com.okmich.practise.designpattern.familytree.FamilyTree;
+import com.okmich.designpatterns.familytree.FamilyTree;
+
 
 /**
  *
