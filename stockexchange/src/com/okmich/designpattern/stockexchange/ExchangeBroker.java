@@ -9,9 +9,9 @@ package com.okmich.designpattern.stockexchange;
  *
  * @author m.enudi
  */
-public class SecondBroker extends Colleague {
+public class ExchangeBroker extends Broker {
 
-    public SecondBroker(Mediator mediator) {
+    public ExchangeBroker(Mediator mediator) {
         super(mediator);
     }
 

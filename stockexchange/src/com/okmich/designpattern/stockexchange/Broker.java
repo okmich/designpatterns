@@ -9,12 +9,12 @@ package com.okmich.designpattern.stockexchange;
  *
  * @author m.enudi
  */
-public abstract class Colleague {
+public abstract class Broker {
 
     private final Mediator _mediator;
     private int _code;
 
-    public Colleague(Mediator mediator) {
+    public Broker(Mediator mediator) {
         this._mediator = mediator;
         register();
     }
@@ -66,7 +66,7 @@ public abstract class Colleague {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Colleague other = (Colleague) obj;
+        final Broker other = (Broker) obj;
         if (this._code != other._code) {
             return false;
         }

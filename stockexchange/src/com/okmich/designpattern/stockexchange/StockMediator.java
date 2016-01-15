@@ -15,7 +15,7 @@ import java.util.List;
 public class StockMediator implements Mediator {
 
     private int colleagueCode = 0;
-    private final List<Colleague> colleagues;
+    private final List<Broker> colleagues;
     private final List<StockOffer> sellStockOffers;
     private final List<StockOffer> buyStockOffers;
 
@@ -26,14 +26,14 @@ public class StockMediator implements Mediator {
     }
 
     @Override
-    public void register(Colleague colleague) {
+    public void register(Broker colleague) {
         colleagueCode++;
         colleague.setCode(colleagueCode);
         colleagues.add(colleague);
     }
 
     @Override
-    public void unregister(Colleague colleague) {
+    public void unregister(Broker colleague) {
         colleagues.remove(colleague);
     }
 

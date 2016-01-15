@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.okmich.designpattern.stockexchange.v2;
+import com.okmich.designpattern.stockexchange.v2.BarterExchange;
+import com.okmich.designpattern.stockexchange.v2.Broker;
+import com.okmich.designpattern.stockexchange.v2.Exchange;
+import com.okmich.designpattern.stockexchange.v2.ExchangeBroker;
 
 /**
- *
- *
- * Other patterns used here include
- * <ul>
- * <li>Command Design Pattern</li>
- * <li>Observer Design Pattern</li>
- * <li>State Design Pattern</li>
- * </ul>
+ * The main class for version 2 of the stock exchange project
  *
  * @author Michael Enudi
  */
-public class Main {
+public class MainV2 {
 
     public static void main(String[] args) {
         Exchange exchange = new BarterExchange();

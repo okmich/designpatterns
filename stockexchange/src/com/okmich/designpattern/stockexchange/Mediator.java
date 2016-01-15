@@ -11,9 +11,9 @@ package com.okmich.designpattern.stockexchange;
  */
 public interface Mediator {
 
-    void register(Colleague colleague);
+    void register(Broker colleague);
 
-    void unregister(Colleague colleague);
+    void unregister(Broker colleague);
 
     void salesOffer(String symbol, int shares, int _code);
 

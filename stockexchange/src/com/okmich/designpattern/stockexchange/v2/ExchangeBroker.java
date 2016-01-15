@@ -20,7 +20,7 @@ public class ExchangeBroker implements Broker {
      * @param name
      * @param exchange
      */
-    protected ExchangeBroker(String name, Exchange exchange) {
+    public ExchangeBroker(String name, Exchange exchange) {
         this._exchange = exchange;
         this._name = name;
         //perform self registration

@@ -4,12 +4,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.okmich.designpattern.stockexchange.Colleague;
-import com.okmich.designpattern.stockexchange.FirstBroker;
+import com.okmich.designpattern.stockexchange.Broker;
+import com.okmich.designpattern.stockexchange.ExchangeBroker;
 import com.okmich.designpattern.stockexchange.Mediator;
-import com.okmich.designpattern.stockexchange.SecondBroker;
 import com.okmich.designpattern.stockexchange.StockMediator;
-import com.okmich.designpattern.stockexchange.ThirdBroker;
 
 /**
  * This is a demonstration of a Mediator Design pattern. The case scenario is an
@@ -33,9 +31,9 @@ public class Main {
     public static void main(String[] args) {
         Mediator exchange = new StockMediator();
 
-        Colleague firstBroker = new FirstBroker(exchange);
-        Colleague secondBroker = new SecondBroker(exchange);
-        Colleague thirdBroker = new ThirdBroker(exchange);
+        Broker firstBroker = new ExchangeBroker(exchange);
+        Broker secondBroker = new ExchangeBroker(exchange);
+        Broker thirdBroker = new ExchangeBroker(exchange);
 
         System.out.println("++++++++++++++++ trading begins ++++++++++++++++++++++++++");
         //begin trading

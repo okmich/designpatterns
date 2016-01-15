@@ -44,9 +44,9 @@ public class BarterExchange implements Exchange {
 
     @Override
     public void notifyOnStockEvent(Stock stock) {
-        for (Broker _broker : brokers) {
+        brokers.stream().forEach((_broker) -> {
             _broker.update(null);
-        }
+        });
     }
 
     @Override
