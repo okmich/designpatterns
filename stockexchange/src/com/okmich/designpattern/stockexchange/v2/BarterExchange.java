@@ -5,8 +5,11 @@
  */
 package com.okmich.designpattern.stockexchange.v2;
 
+import com.okmich.designpattern.stockexchange.v2.broker.Broker;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,15 +34,13 @@ public class BarterExchange implements Exchange {
     }
 
     @Override
-    public void registerBroker(ExchangeBroker broker) {
-        broker.setId(broker.getName().replace(" ", "") + "_" + brokers.size());
+    public void registerBroker(Broker broker) {
         brokers.add(broker);
     }
 
     @Override
-    public void unregisterBroker(ExchangeBroker broker) {
+    public void unregisterBroker(Broker broker) {
         this.brokers.remove(broker);
-        broker.setId(null);
     }
 
     @Override
@@ -50,13 +51,21 @@ public class BarterExchange implements Exchange {
     }
 
     @Override
-    public void fill(Order order) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Order fill(Order order) {
+        Stock stock = _stockRegister.getStock(order.getSymbol());
+        try {
+            ((ServerOrder) order).execute(this, stock);
+        } catch (Exception ex) {
+            Logger.getLogger(BarterExchange.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        return order;
     }
 
     @Override
-    public Order getOrderTicket(String orderType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Order getOrderTicket(int orderType, Broker broker) {
+        return OrderFactory.getOrder(orderType,
+                broker.getBrokerId(), broker.getBrokerName());
     }
 
     @Override

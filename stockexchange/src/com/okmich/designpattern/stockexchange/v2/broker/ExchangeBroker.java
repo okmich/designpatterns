@@ -3,7 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.okmich.designpattern.stockexchange.v2;
+package com.okmich.designpattern.stockexchange.v2.broker;
+
+import com.okmich.designpattern.stockexchange.v2.Exchange;
+import com.okmich.designpattern.stockexchange.v2.Order;
+import com.okmich.designpattern.stockexchange.v2.OrderType;
+import com.okmich.designpattern.stockexchange.v2.Stock;
+import java.util.UUID;
 
 /**
  *
@@ -23,6 +29,8 @@ public class ExchangeBroker implements Broker {
     public ExchangeBroker(String name, Exchange exchange) {
         this._exchange = exchange;
         this._name = name;
+        //give it some random id
+        this._Id = UUID.randomUUID().toString();
         //perform self registration
         register();
     }
@@ -57,9 +65,9 @@ public class ExchangeBroker implements Broker {
      * {@inheritDoc }
      */
     @Override
-    public String buyOffer(String symbol, float price) {
-
-        return null;
+    public String buyOffer(String symbol, int unit) {
+        Order order = this._exchange.getOrderTicket(OrderType.BUY, this);
+        return placeOrder(order, symbol, unit);
     }
 
     /**
@@ -67,36 +75,38 @@ public class ExchangeBroker implements Broker {
      * {@inheritDoc }
      */
     @Override
-    public String salesOffer(String symbol, float price) {
-
-        return null;
+    public String salesOffer(String symbol, int unit) {
+        Order order = this._exchange.getOrderTicket(OrderType.SELL, this);
+        return placeOrder(order, symbol, unit);
     }
 
     /**
      * @return the _Id
      */
-    public String getId() {
+    @Override
+    public String getBrokerId() {
         return _Id;
     }
 
     /**
      * @param _Id the _Id to set
      */
-    public void setId(String _Id) {
+    public void setBrokerId(String _Id) {
         this._Id = _Id;
     }
 
     /**
      * @return the _name
      */
-    public String getName() {
+    @Override
+    public String getBrokerName() {
         return _name;
     }
 
     /**
      * @param _name the _name to set
      */
-    public void setName(String _name) {
+    public void setBrokerName(String _name) {
         this._name = _name;
     }
 
@@ -116,5 +126,20 @@ public class ExchangeBroker implements Broker {
         final ExchangeBroker other = (ExchangeBroker) obj;
 
         return this._Id.equals(other._Id);
+    }
+
+    /**
+     *
+     * @param order
+     * @param symbol
+     * @param unit
+     * @return
+     */
+    private String placeOrder(Order order, String symbol, int unit) {
+        order.setSymbol(symbol);
+        order.setUnits(unit);
+        order = this._exchange.fill(order);
+
+        return String.valueOf(order.getTicketId());
     }
 }

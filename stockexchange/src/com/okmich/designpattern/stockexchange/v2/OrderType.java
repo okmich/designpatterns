@@ -11,7 +11,14 @@ import java.io.Serializable;
  *
  * @author michael.enudi
  */
-public enum OrderType implements Serializable {
+public interface OrderType extends Serializable {
 
-    BUY, SELL
+    /**
+     * BUY
+     */
+    int BUY = 0;
+    /**
+     * SELL
+     */
+    int SELL = 5;
 }

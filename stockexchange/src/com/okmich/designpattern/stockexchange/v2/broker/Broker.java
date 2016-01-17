@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.okmich.designpattern.stockexchange.v2;
+package com.okmich.designpattern.stockexchange.v2.broker;
 
+import com.okmich.designpattern.stockexchange.v2.Stock;
 import java.io.Serializable;
 
 /**
@@ -12,6 +13,18 @@ import java.io.Serializable;
  * @author michael.enudi
  */
 public interface Broker extends Serializable {
+
+    /**
+     *
+     * @return
+     */
+    String getBrokerId();
+
+    /**
+     *
+     * @return
+     */
+    String getBrokerName();
 
     /**
      * registers broker and assigns id
@@ -32,16 +45,16 @@ public interface Broker extends Serializable {
     /**
      *
      * @param symbol
-     * @param price
+     * @param unit
      * @return - order ticket
      */
-    String buyOffer(String symbol, float price);
+    String buyOffer(String symbol, int unit);
 
     /**
      *
      * @param symbol
-     * @param price
+     * @param unit
      * @return - order ticket
      */
-    String salesOffer(String symbol, float price);
+    String salesOffer(String symbol, int unit);
 }

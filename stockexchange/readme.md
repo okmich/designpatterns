@@ -23,6 +23,7 @@ They include,
 While there are drastically being more classes in this version, it is a more loosely couple and interactive version than the first.
 
 Other patterns used here include
+- Adapter 
 - Command 
 - Factory
 - Observer 

@@ -1,7 +1,7 @@
 import com.okmich.designpattern.stockexchange.v2.BarterExchange;
-import com.okmich.designpattern.stockexchange.v2.Broker;
+import com.okmich.designpattern.stockexchange.v2.broker.Broker;
 import com.okmich.designpattern.stockexchange.v2.Exchange;
-import com.okmich.designpattern.stockexchange.v2.ExchangeBroker;
+import com.okmich.designpattern.stockexchange.v2.broker.ExchangeBroker;
 
 /**
  * The main class for version 2 of the stock exchange project
@@ -34,6 +34,7 @@ public class MainV2 {
         guruBrokers.buyOffer("GOOG", 30);
         guruBrokers.salesOffer("GOOG", 30);
         guruBrokers.salesOffer("MSFT", 10);
+        guruBrokers.buyOffer("AMZN", 120);
 
         System.out.println("++++++++++++++++ trading ends ++++++++++++++++++++++++++");
 

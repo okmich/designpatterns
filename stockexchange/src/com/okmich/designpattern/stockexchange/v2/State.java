@@ -31,8 +31,9 @@ public abstract class State implements Serializable {
     /**
      *
      * @param owningStock
+     * @param requestedVol
      */
-    protected abstract void effect(Stock owningStock);
+    protected abstract void effect(Stock owningStock, int requestedVol);
 
     /**
      *
@@ -88,8 +89,8 @@ public abstract class State implements Serializable {
         }
 
         @Override
-        protected void effect(Stock owningStock) {
-
+        protected void effect(Stock owningStock, int requestedVol) {
+            //do nothing
         }
 
     }
@@ -104,8 +105,12 @@ public abstract class State implements Serializable {
         }
 
         @Override
-        protected void effect(Stock owningStock) {
+        protected void effect(Stock owningStock, int requestedVol) {
+            float newPrice = (owningStock.getBidPrice() * requestedVol)
+                    / Math.abs(owningStock.getVolume());
 
+            owningStock.setBidPrice(owningStock.getBidPrice() + newPrice);
+            owningStock.setVolume(owningStock.getVolume() + requestedVol);
         }
 
     }
@@ -120,8 +125,12 @@ public abstract class State implements Serializable {
         }
 
         @Override
-        protected void effect(Stock owningStock) {
+        protected void effect(Stock owningStock, int requestedVol) {
+            float newPrice = (owningStock.getAskPrice() * requestedVol)
+                    / Math.abs(owningStock.getVolume());
 
+            owningStock.setAskPrice(owningStock.getAskPrice() - newPrice);
+            owningStock.setVolume(owningStock.getVolume() - requestedVol);
         }
     }
 }

@@ -93,10 +93,11 @@ public class Stock implements Serializable {
 
     /**
      * @param state the state to set
+     * @param rVol - the requested volumn with this new state
      */
-    public void setState(State state) {
+    public void setState(State state, int rVol) {
         this.state = state;
         //setting the new state will affect the pricing and direction
-        this.state.effect(this);
+        this.state.effect(this, rVol);
     }
 }

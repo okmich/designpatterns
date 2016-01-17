@@ -11,78 +11,55 @@ import java.io.Serializable;
  *
  * @author michael.enudi
  */
-public abstract class Order implements Serializable {
-
-    private final int ticketId;
-    private String symbol;
-    private float price;
-    private int units;
-    private OrderType orderType;
-
-    protected Order(int id) {
-        this.ticketId = id;
-    }
-
-    /**
-     *
-     * @param exchange
-     * @throws Exception
-     */
-    abstract void execute(Exchange exchange) throws Exception;
+public interface Order extends Serializable {
 
     /**
      * @return the ticketId
      */
-    int getTicketId() {
-        return ticketId;
-    }
+    public long getTicketId();
 
     /**
      * @return the symbol
      */
-    String getSymbol() {
-        return symbol;
-    }
+    public String getSymbol();
 
     /**
      * @param symbol the symbol to set
      */
-    void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
+    public void setSymbol(String symbol);
 
     /**
      * @return the price
      */
-    float getPrice() {
-        return price;
-    }
+    public float getPrice();
 
     /**
      * @param price the price to set
      */
-    void setPrice(float price) {
-        this.price = price;
-    }
+    public void setPrice(float price);
 
     /**
      * @return the units
      */
-    int getUnits() {
-        return units;
-    }
+    public int getUnits();
 
     /**
      * @param units the units to set
      */
-    void setUnits(int units) {
-        this.units = units;
-    }
+    public void setUnits(int units);
 
     /**
      * @return the orderType
      */
-    OrderType getOrderType() {
-        return orderType;
-    }
+    public int getOrderType();
+
+    /**
+     * @return the brokerId
+     */
+    public String getBrokerId();
+
+    /**
+     * @return the brokerName
+     */
+    public String getBrokerName();
 }

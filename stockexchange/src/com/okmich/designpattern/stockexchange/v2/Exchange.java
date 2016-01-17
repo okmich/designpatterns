@@ -5,6 +5,8 @@
  */
 package com.okmich.designpattern.stockexchange.v2;
 
+import com.okmich.designpattern.stockexchange.v2.broker.Broker;
+import com.okmich.designpattern.stockexchange.v2.broker.ExchangeBroker;
 import java.io.Serializable;
 
 /**
@@ -17,13 +19,13 @@ public interface Exchange extends Serializable {
      *
      * @param broker
      */
-    void registerBroker(ExchangeBroker broker);
+    void registerBroker(Broker broker);
 
     /**
      *
      * @param broker
      */
-    void unregisterBroker(ExchangeBroker broker);
+    void unregisterBroker(Broker broker);
 
     /**
      *
@@ -34,15 +36,17 @@ public interface Exchange extends Serializable {
     /**
      *
      * @param order
+     * @return
      */
-    void fill(Order order);
+    Order fill(Order order);
 
     /**
      *
      * @param orderType
+     * @param broker
      * @return
      */
-    Order getOrderTicket(String orderType);
+    Order getOrderTicket(int orderType, Broker broker);
 
     /**
      *

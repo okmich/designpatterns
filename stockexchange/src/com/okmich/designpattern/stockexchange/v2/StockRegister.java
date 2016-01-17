@@ -6,6 +6,7 @@
 package com.okmich.designpattern.stockexchange.v2;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -70,6 +71,7 @@ public final class StockRegister implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        DecimalFormat df = new DecimalFormat("#,##0.00");
 
         sb.append("SYM").append("\t").append("ASK").append("\t").append("BID")
                 .append("\t").append("VOL").append("\t").append("STATE");
@@ -79,8 +81,8 @@ public final class StockRegister implements Serializable {
 
         stockMap.values().stream().forEach((_stock) -> {
             sb.append("\n");
-            sb.append(_stock.getSymbol()).append("\t").append(_stock.getAskPrice())
-                    .append("\t").append(_stock.getBidPrice())
+            sb.append(_stock.getSymbol()).append("\t").append(df.format(_stock.getAskPrice()))
+                    .append("\t").append(df.format(_stock.getBidPrice()))
                     .append("\t").append(_stock.getVolume()).append("\t")
                     .append(_stock.getState());
         });
