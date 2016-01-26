@@ -12,7 +12,7 @@ Other patterns used here include
 - Observer Design Pattern
 
 
-## This is a more compound design to the one above.
+## Version 2
 This version of the exchange house has a lot more functionalities enabled by newer implementations of design patterns.
 They include,
 - Stocks now have a state in the Stock inventory. Their prices could be going up, down or just flat.

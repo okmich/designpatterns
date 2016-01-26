@@ -1,2 +1,2 @@
 # designpatterns
-Reinforcing Design Patterns with Stories written in java code
+Reinforcing Design Patterns with Story lines with the application in java code
