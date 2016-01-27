@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.okmich.designpatterns.familytree.interpreter;
+package com.okmich.designpatterns.familytree.interpreter.term;
 
+import com.okmich.designpatterns.familytree.interpreter.term.Term;
 import com.okmich.designpatterns.familytree.FamilyTree;
 
 /**
  *
  * @author m.enudi
  */
-public class ReferenceTerm extends Term {
+public abstract class ReferenceTerm<T> extends Term {
 
     protected final String ref;
 
@@ -20,11 +21,23 @@ public class ReferenceTerm extends Term {
     }
 
     @Override
-    public void figureIt(String term, FamilyTree familyTree) {
+    public void interpret(String term, FamilyTree familyTree) {
         if (familyTree.getContext() == null) { //subject of the grammer
 
         } else { //the object of the grammer
 
         }
     }
+
+    /**
+     *
+     * @return
+     */
+    public abstract T get();
+
+    /**
+     *
+     * @return
+     */
+    public abstract T[] getArray();
 }

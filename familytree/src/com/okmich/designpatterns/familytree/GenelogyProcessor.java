@@ -5,12 +5,12 @@
  */
 package com.okmich.designpatterns.familytree;
 
-import com.okmich.designpatterns.familytree.interpreter.ActionTerm;
+import com.okmich.designpatterns.familytree.interpreter.term.ActionTerm;
 import com.okmich.designpatterns.familytree.interpreter.PersonTermFactory;
-import com.okmich.designpatterns.familytree.interpreter.PronounTerm;
-import com.okmich.designpatterns.familytree.interpreter.ReferenceTerm;
-import com.okmich.designpatterns.familytree.interpreter.Term;
-
+import com.okmich.designpatterns.familytree.interpreter.term.ReferenceTerm;
+import com.okmich.designpatterns.familytree.interpreter.term.Term;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,9 +28,9 @@ public class GenelogyProcessor implements Processor<Void> {
     public Void process(String command, FamilyTree familyTree) {
         //split the string into commands
         Term term = getTermFromCommand(command);
-        //loop through composite terms to call process
+        //loop through list of terms to call process
         try {
-           // term.figureIt("", familyTree);
+            // term.interprete("", familyTree);
         } catch (Exception e) {
         }
         return null;
@@ -41,17 +41,13 @@ public class GenelogyProcessor implements Processor<Void> {
      * @param command
      * @return
      */
-    private Term getTermFromCommand(String command) {
+    private List<Term> getTermFromCommand(String command) {
         String[] expressions = command.split("\\s");
-        Term term = null;
+        List<Term> terms = new ArrayList<>(expressions.length);
         for (String item : expressions) {
-            if (term == null) {
-                term = getTerm(item);
-            } else {
-                term.setNextTerm(getTerm(item));
-            }
+            terms.add(getTerm(item));
         }
-        return term;
+        return terms;
     }
 
     /**
@@ -65,15 +61,10 @@ public class GenelogyProcessor implements Processor<Void> {
             throw new IllegalArgumentException("cant have a null term");
         }
         //
-        if (item.startsWith(Term.NEW_PERSON_INDICATOR)) {
-            return PersonTermFactory.getPersonTerm(item);
-        } else if (ActionTerm.isActionCommand(item)) {
+        if (ActionTerm.isActionCommand(item)) {
             return ActionTerm.getTerm(item);
-        } else if (PronounTerm.isPronoun(item)) {
-            return new PronounTerm(item);
-        } else { //we asuume this is a reference to a previously declared term
-            return new ReferenceTerm(item);
+        } else {
+            throw new IllegalArgumentException();
         }
     }
-
 }

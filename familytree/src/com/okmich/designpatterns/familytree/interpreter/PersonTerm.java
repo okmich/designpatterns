@@ -5,6 +5,7 @@
  */
 package com.okmich.designpatterns.familytree.interpreter;
 
+import com.okmich.designpatterns.familytree.interpreter.term.Term;
 import com.okmich.designpatterns.familytree.FamilyTree;
 import com.okmich.designpatterns.familytree.Person;
 
@@ -20,7 +21,7 @@ public abstract class PersonTerm extends Term {
     }
 
     @Override
-    public void figureIt(String term, FamilyTree familyTree) {
+    public void interpret(String term, FamilyTree familyTree) {
         //hook method  call
         doFigureIt(familyTree);
         //clear this reference before leaving
